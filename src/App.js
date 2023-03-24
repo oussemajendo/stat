@@ -1,6 +1,9 @@
 
 import React, { Component } from "react";
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {  Button , Card} from 'react-bootstrap'
+
 class App extends Component {
   state = {
     person: {
@@ -31,22 +34,30 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.toggleShows}>
+      <div className="text-center"  style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <Card style={{ width: '25rem' }}>
+      
+        <Button onClick={this.toggleShows}>
           {this.state.shows ? "Hide" : "Show"} Profile
-        </button>
+        </Button>
         {this.state.shows && (
           <div>
-            <h2>{this.state.person.fullName}</h2>
-            <img src={this.state.person.imgSrc} alt="profile" width={200}/>
+             <h2>{this.state.person.fullName}</h2>
+            <Card.Body style={{padding:'35px'}} >
+            <img src={this.state.person.imgSrc} alt="profile" width={300}/>
             <p>{this.state.person.bio}</p>
-            <p>{this.state.person.profession}</p>
+            <h3 style={{color:'red'}}>{this.state.person.profession}</h3>
+            </Card.Body>
           </div>
         )}
         <p>Time since mount: {this.state.time} seconds</p>
+       
+    </Card>
       </div>
+      
     );
   }
 }
+
 
 export default App;
